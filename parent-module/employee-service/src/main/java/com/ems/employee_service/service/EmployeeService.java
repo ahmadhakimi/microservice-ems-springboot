@@ -68,13 +68,14 @@ public class EmployeeService {
 
         DeptRespond department = webClientBuilder.build()
                 .get()
-                .uri("http://localhost:8080/api/dept/" + employee.getDeptId())
+                .uri("http://localhost:8080/api/dept/" + employee.getDeptId()) //employee.getDeptId()
                 .retrieve()
                 .bodyToMono(DeptRespond.class)
                 .block();
 
         return mapToEmployeeEntity(employee, department);
     }
+
 
 //    update employee by id
 
@@ -107,19 +108,19 @@ public class EmployeeService {
             existingEmployee.setCreatedBy(employeeRequest.getCreatedBy());
         }
 
-        if(employeeRequest.getTotalClaim() != existingEmployee.getTotalClaim()) {
+        if(employeeRequest.getTotalClaim() != null) {
             existingEmployee.setTotalClaim(employeeRequest.getTotalClaim());
         }
 
-        if(employeeRequest.getAnnualLeave() != existingEmployee.getAnnualLeave()) {
+        if(employeeRequest.getAnnualLeave() != null) {
             existingEmployee.setAnnualLeave(employeeRequest.getAnnualLeave());
         }
 
-        if(employeeRequest.getBonus() != existingEmployee.getBonus()) {
+        if(employeeRequest.getBonus() != null) {
             existingEmployee.setBonus(employeeRequest.getBonus());
         }
 
-        if(employeeRequest.getSalary() != existingEmployee.getSalary()) {
+        if(employeeRequest.getSalary() != null) {
             existingEmployee.setSalary(employeeRequest.getSalary());
         }
 
@@ -197,7 +198,10 @@ public class EmployeeService {
     public List<EmployeeInDept> getEmployeesByDeptId(Long deptId) {
         return employeeRepository.findByDeptId(deptId) // Changed to findByDeptId
                 .stream()
-                .map(employee -> EmployeeInDept.builder().name(employee.getName()).build())
+                .map(employee -> EmployeeInDept.builder()
+                        .name(employee.getName())
+                        .build())
                 .collect(Collectors.toList());
     }
 }
+

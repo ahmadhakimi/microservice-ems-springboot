@@ -2,6 +2,7 @@ package com.ems.department_service.controller;
 
 import com.ems.department_service.dto.DeptRequest;
 import com.ems.department_service.dto.DeptRespond;
+import com.ems.department_service.dto.DeptRespondForAllDept;
 import com.ems.department_service.dto.EmployeeRespond;
 import com.ems.department_service.service.DepartmentService;
 import lombok.RequiredArgsConstructor;
@@ -27,8 +28,8 @@ public class DepartmentController {
     }
 
     @GetMapping
-    public ResponseEntity<List<DeptRespond>> getAllDept () {
-        List<DeptRespond> listDept = departmentService.listOfAllDept();
+    public ResponseEntity<List<DeptRespondForAllDept>> getAllDept () {
+        List<DeptRespondForAllDept> listDept = departmentService.listOfAllDept();
         return ResponseEntity.status(HttpStatus.OK).body(listDept);
 
     }
@@ -51,6 +52,5 @@ public class DepartmentController {
         String s = "Department " + id + " Successfully deleted";
         return s;
     }
-
 
 }

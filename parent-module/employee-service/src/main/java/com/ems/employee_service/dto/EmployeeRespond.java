@@ -22,10 +22,10 @@ public class EmployeeRespond {
     private String updatedBy;
     private boolean deleted;
 
-    private double bonus;
-    private double salary;
-    private int annualLeave;
-    private double totalClaim;
+    private Double bonus;
+    private Double salary;
+    private Integer annualLeave;
+    private Double totalClaim;
 
     private DeptRespond department;
 }

@@ -15,16 +15,5 @@ public class EmployeeRespond {
 
     private String empId;
     private String name;
-//    private String email;
-//    private String password;
-//    private Role role;
-//    private String createdBy;
-//    private String updatedBy;
-//    private boolean deleted;
-//
-//    private double bonus;
-//    private double salary;
-//    private int annualLeave;
-//    private double totalClaim;
 
 }

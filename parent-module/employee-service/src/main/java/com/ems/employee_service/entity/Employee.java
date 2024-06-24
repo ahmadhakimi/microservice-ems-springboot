@@ -29,10 +29,10 @@ public class Employee {
 
     private Long deptId; //Reference to Dept ID
 
-    private double bonus;
-    private double salary;
-    private int annualLeave;
-    private double totalClaim;
+    private Double bonus;
+    private Double salary;
+    private Integer annualLeave;
+    private Double totalClaim;
 
 
 }

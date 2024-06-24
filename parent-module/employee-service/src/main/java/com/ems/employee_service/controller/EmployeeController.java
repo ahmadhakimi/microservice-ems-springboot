@@ -61,6 +61,7 @@ public class EmployeeController {
 
     }
 
+    //mapping webclient from get department by id
     @GetMapping("/dept/{deptId}")
     public ResponseEntity<List<EmployeeInDept>> getEmployeesByDeptId(@PathVariable Long deptId) {
         List<EmployeeInDept> employees = employeeService.getEmployeesByDeptId(deptId);

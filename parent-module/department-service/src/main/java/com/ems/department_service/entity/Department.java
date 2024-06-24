@@ -25,5 +25,4 @@ public class Department {
     private String deptAddress;
     private String deptCode;
 
-//    private List<EmployeeRespond> employeeList;
 }

@@ -2,6 +2,7 @@ package com.ems.department_service.service;
 
 import com.ems.department_service.dto.DeptRequest;
 import com.ems.department_service.dto.DeptRespond;
+import com.ems.department_service.dto.DeptRespondForAllDept;
 import com.ems.department_service.dto.EmployeeRespond;
 import com.ems.department_service.entity.Department;
 import com.ems.department_service.repository.DepartmentRepository;
@@ -34,10 +35,10 @@ public class DepartmentService {
         return mapToDeptEntity(saveDept);
     }
 
-    public List<DeptRespond> listOfAllDept () {
+    public List<DeptRespondForAllDept> listOfAllDept () {
         return departmentRepository.findAll()
                 .stream()
-                .map(this::mapToDeptEntity)
+                .map(this::mappingAllDept)
                 .collect(Collectors.toList());
     }
 
@@ -118,4 +119,12 @@ public class DepartmentService {
                 .build();
     }
 
+    private DeptRespondForAllDept mappingAllDept(Department dept) {
+        return DeptRespondForAllDept.builder()
+                .deptId(dept.getDeptId())
+                .deptName(dept.getDeptName())
+                .deptAddress(dept.getDeptAddress())
+                .deptCode(dept.getDeptCode())
+                .build();
+    }
 }
