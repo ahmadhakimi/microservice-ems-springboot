@@ -7,6 +7,7 @@ import com.ems.employee_service.dto.EmployeeRespond;
 import com.ems.employee_service.entity.Employee;
 import com.ems.employee_service.repository.EmployeeRepository;
 import lombok.RequiredArgsConstructor;
+import org.bouncycastle.internal.asn1.misc.IDEACBCPar;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -154,6 +155,51 @@ public class EmployeeService {
 
 //        save into repository
         employeeRepository.save(employee);
+    }
+
+//    find the list of employees under 2000 salary
+    public List<EmployeeRespond> salaryUnder2k(){
+        return employeeRepository.findAllEmployeeUnder2k().stream()
+                .map(employee -> {
+                    DeptRespond department = webClientBuilder.build()
+                            .get()
+                            .uri("http://localhost:8080/api/dept/" + employee.getDeptId())
+                            .retrieve()
+                            .bodyToMono(DeptRespond.class)
+                            .block();
+                    return mapToEmployeeEntity(employee, department);
+                })
+                .collect(Collectors.toList());
+    }
+
+//    find the list of employees between 2k and 5k salary
+    public List<EmployeeRespond> salaryBetween2kAnd5k(){
+        return employeeRepository.findAllEmployeeBetween2kAnd5k().stream()
+                .map(employee -> {
+                    DeptRespond department = webClientBuilder.build()
+                            .get()
+                            .uri("http://localhost:8080/api/dept/" + employee.getDeptId())
+                            .retrieve()
+                            .bodyToMono(DeptRespond.class)
+                            .block();
+                    return mapToEmployeeEntity(employee, department);
+                })
+                .collect(Collectors.toList());
+    }
+
+//    find all employees list salary above 5k
+    public List<EmployeeRespond> salaryAbove5k(){
+        return employeeRepository.findAllEmployeeAbove5k().stream()
+                .map(employee -> {
+                    DeptRespond department = webClientBuilder.build()
+                            .get()
+                            .uri("http://localhost:8080/api/dept/" + employee.getDeptId())
+                            .retrieve()
+                            .bodyToMono(DeptRespond.class)
+                            .block();
+                    return  mapToEmployeeEntity(employee, department);
+                })
+                .collect(Collectors.toList());
     }
 
 

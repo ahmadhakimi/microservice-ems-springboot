@@ -26,6 +26,7 @@ public class EmployeeController {
         EmployeeRespond newEmployee = employeeService.createNewEmployee(employeeRequest);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(newEmployee);
+
     }
 
 //    route get all employee
@@ -68,5 +69,22 @@ public class EmployeeController {
         return ResponseEntity.ok(employees);
     }
 
+//    endpoint for employee under 2k
+    @GetMapping("/salary/2k")
+    public ResponseEntity<List<EmployeeRespond>> getSalaryUnder2k() {
+        return ResponseEntity.status(HttpStatus.OK).body(employeeService.salaryUnder2k());
+    }
+
+//    endpoint for employee between 2k and 5k
+    @GetMapping("/salary/2k5k")
+    public ResponseEntity<List<EmployeeRespond>> getSalaryBetween2kAnd5k() {
+        return ResponseEntity.status(HttpStatus.OK).body(employeeService.salaryBetween2kAnd5k());
+    }
+
+//    endpoint for employee more than 5k
+    @GetMapping("/salary/5k")
+    public ResponseEntity<List<EmployeeRespond>> getSalaryAbove5k() {
+        return ResponseEntity.status(HttpStatus.OK).body(employeeService.salaryAbove5k());
+    }
 
 }
