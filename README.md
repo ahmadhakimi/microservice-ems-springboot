@@ -42,7 +42,7 @@ for building and running the application you will need the:
 ## **Running application locally** ⏯️
 - load maven project
   ``` bash
-  mvn celan compile
+  mvn clean compile
 - ensure all the maven successfully loaded within the project
 - run all applications:
   - discovery-server
