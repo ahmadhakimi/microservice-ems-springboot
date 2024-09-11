@@ -20,6 +20,9 @@ EMS is a microservice application to manage employee and department
 - MySQL
 - Maven
 - Spring Cloud 2023.0.2
+- Eureka Server
+- Eureka Discovery Client
+- Webflux Client
 
 ## **Services: ** : :electron:
 - Employee route
