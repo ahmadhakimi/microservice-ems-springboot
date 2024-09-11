@@ -1,7 +1,7 @@
 #  Employee Management System (EMS)🧑‍💼
 ### High-level architecture ems
 
-‼️ ## PLEASE USE THE PARENT-NEW-MICROSERVICE FOLDER ## ‼️
+ # PLEASE USE THE PARENT-NEW-MICROSERVICE FOLDER ## ‼️
 
 ![ems-diagram](https://github.com/user-attachments/assets/6c510c88-c338-406d-93fb-eda67f1f194a)
 
